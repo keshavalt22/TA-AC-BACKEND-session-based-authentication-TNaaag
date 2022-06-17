@@ -4,13 +4,24 @@ var User = require('../models/users');
 
 /* GET users listing. */
 router.get('/register', (req, res, next) => {
-  res.render('register');
+  var error = req.flash('error')[0];
+  res.render('register', {error});
 });
 
 router.post('/register', (req, res, next) => {
   User.create(req.body, (err, user) => {
-    if(err) return next(err);
-    res.render('login');
+    if(err) {
+      if(err.code === 11000) {
+        req.flash('error', "This email is already in use");
+        return res.redirect('/users/register');
+      }
+      if(err.name === 'ValidationError') {
+        req.flash('error', "Password is less than 5 characters");
+          return res.redirect('/users/register');
+      }
+      return next(err);
+    } 
+    res.redirect('/users/login');
   })
 });
 

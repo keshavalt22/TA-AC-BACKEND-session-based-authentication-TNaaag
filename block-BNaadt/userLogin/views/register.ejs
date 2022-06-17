@@ -18,6 +18,9 @@
       </header>
       <main>
         <form action="/users/register" method="post" class="form">
+          <% if(error) { %>
+            <p class="reg-error"><%= error %></p>
+          <% } %>
           <input type="text" name="name" placeholder="Add Name">
           <input type="email" name="email" placeholder="Add Email">
           <input type="password" name="password" placeholder="Enter Password">
