@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="flex">
+            <a href="/">
+                <h2 class="brand">Home</h2>
+            </a>
+            <nav>
+                <% if(userId) {%>
+                    <a href="/articles/new">
+                        <button class="btn-blue">Add Article</button>
+                    </a>
+                <% } %>    
+            </nav>
+        </header>
+        <main>
+            <h2 class="heading">List Of Books</h2>
+            <div class="list">
+                <% articles.forEach(article => { %>
+                    <h3><%= article.title %></h3>
+                    <p><%= article.description %></p>
+                    <h4>Likes: <%= article.likes ? article.likes : 0 %></h4>
+                    <div>
+                        <a href="/articles/<%= article._id%>/likes">
+                            <button class="btn-green">Like</button>
+                        </a>
+                        <a href="/articles/<%= article._id%>/dislikes">
+                            <button class="btn-red">Dislike</button>
+                        </a>
+                    </div>
+                    <div class="margin-top">
+                        <% if(userId) { %>
+                            <a href="/articles/<%= article._id %>">
+                                <button class="btn-green">Show</button>
+                            </a>
+                        <% } %>    
+                    </div>
+                <% }) %>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
