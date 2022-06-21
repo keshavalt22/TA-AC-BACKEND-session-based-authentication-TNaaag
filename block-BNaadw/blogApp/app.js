@@ -14,6 +14,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var articleRouter = require('./routes/articles');
+var commentRouter = require('./routes/comments');
 
 
 //connect to db
@@ -48,6 +49,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/articles', articleRouter);
 app.use('/users', usersRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -35,6 +35,14 @@ router.post('/login', (req, res, next) => {
       res.redirect('/articles');
     })
   })
+});
+
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.clearCookie();
+  res.redirect('/');
 })
+
 
 module.exports = router;

@@ -14,9 +14,11 @@
                 <h2 class="brand">Home</h2>
             </a>
             <nav>
-                <a href="/users/login">
-                    <button class="btn-blue">Login</button>
-                </a>
+                <% if(userId) {%>
+                    <a href="/articles/new">
+                        <button class="btn-blue">Add Article</button>
+                    </a>
+                <% } %>    
             </nav>
         </header>
         <main>
@@ -24,9 +26,23 @@
             <div class="list">
                 <% articles.forEach(article => { %>
                     <h3><%= article.title %></h3>
-                    <a href="/articles/<%= article._id %>">
-                        <button class="btn-green">Show</button>
-                    </a>
+                    <p><%= article.description %></p>
+                    <h4>Likes: <%= article.likes ? article.likes : 0 %></h4>
+                    <div>
+                        <a href="/articles/<%= article._id%>/likes">
+                            <button class="btn-green">Like</button>
+                        </a>
+                        <a href="/articles/<%= article._id%>/dislikes">
+                            <button class="btn-red">Dislike</button>
+                        </a>
+                    </div>
+                    <div class="margin-top">
+                        <% if(userId) { %>
+                            <a href="/articles/<%= article._id %>">
+                                <button class="btn-green">Show</button>
+                            </a>
+                        <% } %>    
+                    </div>
                 <% }) %>
             </div>
         </main>
