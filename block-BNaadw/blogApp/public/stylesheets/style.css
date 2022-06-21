@@ -120,10 +120,62 @@ a {
   text-align: center;
 }
 
+.margin-top {
+  margin-top: 1rem;
+}
+
 main {
   padding: 20px 400px;
 }
 footer{
 	padding: 20px;
     background-color: rgb(144,144,231);
+}
+
+.form{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 6rem;
+}
+
+.form input {
+	margin: 0 auto;
+	padding: 6px 14px;
+	display: block;
+	margin-bottom: 2rem;
+}
+
+.form textarea {
+	margin: 0 auto;
+	padding: 6px 14px;
+	margin-bottom: 2rem;
+}
+
+.list {
+	max-width: 600px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.list h2 {
+	color: blue;
+	font-size: 2.2rem;
+	font-weight: 700;
+}
+
+.list h3 {
+	font-size: 2rem;
+	color: skyblue;
+	padding-top: 4rem;
+	padding-bottom: 2rem;
+}
+.list h4 {
+	font-size: 1.4rem;
+	color: rgb(172, 118, 57);
+	padding: 1rem 0;
+}
+
+.list p {
+	font-size: 1.2rem;
+	color: gray;
 }
